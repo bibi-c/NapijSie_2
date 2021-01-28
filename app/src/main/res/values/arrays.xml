@@ -1,0 +1,35 @@
+<resources>
+    <!-- Body Preference -->
+    <string-array name="sex_entries">
+        <item>Kobieta</item>
+        <item>Mężczyzna</item>
+    </string-array>
+
+    <string-array name="sex_values">
+        <item>sex_female</item>
+        <item>sex_male</item>
+    </string-array>
+
+    <!-- Physical activity Preference -->
+    <string-array name="phys_activity_entries">
+        <item>Mała</item>
+        <item>Umiarkowana</item>
+        <item>Duża</item>
+    </string-array>
+
+    <string-array name="phys_activity_values">
+        <item>activity_minimal</item>
+        <item>activity_moderate</item>
+        <item>activity_high</item>
+    </string-array>
+    <!-- Reply Preference -->
+    <string-array name="reply_entries">
+        <item>Reply</item>
+        <item>Reply to all</item>
+    </string-array>
+
+    <string-array name="reply_values">
+        <item>reply</item>
+        <item>reply_all</item>
+    </string-array>
+</resources>
