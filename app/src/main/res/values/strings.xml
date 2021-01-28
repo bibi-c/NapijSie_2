@@ -6,27 +6,16 @@
     <string name="title_settings">Ustawienia</string>
 
     <!-- Preference Titles -->
-    <string name="settings_bio_header">Parametry twojego ciała</string>
+    <string name="settings_bio_header">Parametry podstawowe</string>
     <string name="phys_activity_header">Twoja aktywność fizyczna</string>
 
-    <!-- Messages Preferences -->
+    <!-- Settings Preferences -->
+    <string name="name_title">Imię</string>
     <string name="sex_title">Płeć</string>
     <string name="age_title">Wiek</string>
     <string name="weight_title">Waga</string>
     <string name="phys_activity_title">Aktywność fizyczna</string>
-    <!-- Preference Titles -->
-    <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
-
-    <!-- Messages Preferences -->
-    <string name="signature_title">Your signature</string>
-    <string name="reply_title">Default reply action</string>
-
-    <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
-    </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="warn_settings_incomplete">Ustawienia są niekompletne</string>
+    <string name="prefs_def_value">-1</string>
 
 </resources>
