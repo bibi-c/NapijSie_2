@@ -8,7 +8,6 @@
             app:useSimpleSummaryProvider="true" />
 
         <ListPreference
-            app:defaultValue="sex_no_sex"
             app:entries="@array/sex_entries"
             app:entryValues="@array/sex_values"
             app:key="sex"
@@ -37,6 +36,17 @@
             app:key="phys_actvity"
             app:title="@string/phys_activity_title"
             app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/water_demand_header">
+
+        <EditTextPreference
+            app:key="water_demand_calc"
+            app:title="@string/water_demand_title"
+            app:useSimpleSummaryProvider="true"
+            app:defaultValue="-1"
+            app:enabled="false" />
 
     </PreferenceCategory>
 

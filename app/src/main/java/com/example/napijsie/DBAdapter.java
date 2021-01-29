@@ -36,11 +36,9 @@ public class DBAdapter {
             String query =
                     "CREATE TABLE water_readings(" +
                     "id integer primary key autoincrement," +
-                    "sex integer, " +
-                    "age integer," +
-                     "weight real," +
-                     "phys_activity_type integer," +
-                      "calc_daily_water_demand_ml real);";
+                    "curr_water_demand_calc real, " +
+                    "reading_datetime integer," +
+                     "reading_water_amt real);";
             db.execSQL(query);
         }
 
@@ -50,6 +48,67 @@ public class DBAdapter {
             db.execSQL(query);
             onCreate(db);
         }
+
+    }
+
+
+    public void insertReading(Integer reading_datetime, Float reading_water_amt, Float curr_water_demand_calc){
+        ContentValues cv = new ContentValues();
+        cv.put("curr_water_demand_calc", curr_water_demand_calc);
+        cv.put("reading_datetime", reading_datetime);
+        cv.put("reading_water_amt", reading_water_amt);
+        mSqliteDatabase.insert("water_readings", null, cv);
+    }
+
+    public List<String> getReadingsAggDaily(){
+        List<String> readingData = new ArrayList<>();
+
+        String query = new String( "select substr(datetime(reading_datetime, 'unixepoch', 'start of day'), 1, 10) reading_datetime, " +
+                "sum(reading_water_amt) reading_water_amt, " +
+                "max(curr_water_demand_calc), " +
+                "sum(reading_water_amt) / max(curr_water_demand_calc) * 100 " +
+                "from water_readings " +
+                "group by substr(datetime(reading_datetime, 'unixepoch', 'start of day'), 1, 10)" +
+                "order by substr(datetime(reading_datetime, 'unixepoch', 'start of day'), 1, 10) desc" );
+        Cursor cursor = mSqliteDatabase.rawQuery( query, null );
+
+        if(cursor != null && cursor.moveToFirst()){
+            do {
+                readingData.add(cursor.getString(0) + ": " + cursor.getString(1) + "ml / " + cursor.getString(2)
+                        + "ml (" + cursor.getString(3) + "%)");
+            } while (cursor.moveToNext());
+        }
+        return readingData;
+    }
+
+
+    public Integer selectReadingsCnt(){
+        String countQuery = "SELECT * FROM water_readings";
+        Cursor cursor = mSqliteDatabase.rawQuery(countQuery, null);
+        int count = cursor.getCount();
+        cursor.close();
+        return count;
+    }
+
+    public List<String> getReadingsAggToday(){
+        List<String> readingData = new ArrayList<>();
+
+        String query = new String( "select substr(datetime(reading_datetime, 'unixepoch', 'start of day'), 1, 10) reading_datetime, " +
+                "sum(reading_water_amt) reading_water_amt, " +
+                "max(curr_water_demand_calc), " +
+                "sum(reading_water_amt) / max(curr_water_demand_calc) * 100 " +
+                "from water_readings " +
+                "where substr(datetime(reading_datetime, 'unixepoch', 'start of day'), 1, 10) = date('now', 'start of day')" +
+                "group by substr(datetime(reading_datetime, 'unixepoch', 'start of day'), 1, 10)" );
+        Cursor cursor = mSqliteDatabase.rawQuery( query, null );
+
+        if(cursor != null && cursor.moveToFirst()){
+            do {
+                readingData.add(cursor.getString(0) + ": " + cursor.getString(1) + "ml / " + cursor.getString(2)
+                                + "ml (" + cursor.getString(3) + "%)");
+            } while (cursor.moveToNext());
+        }
+        return readingData;
     }
 
 }

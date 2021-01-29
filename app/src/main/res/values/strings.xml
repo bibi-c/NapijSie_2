@@ -8,6 +8,7 @@
     <!-- Preference Titles -->
     <string name="settings_bio_header">Parametry podstawowe</string>
     <string name="phys_activity_header">Twoja aktywność fizyczna</string>
+    <string name="water_demand_header">Twoje zapotrzebowanie na wodę</string>
 
     <!-- Settings Preferences -->
     <string name="name_title">Imię</string>
@@ -15,7 +16,15 @@
     <string name="age_title">Wiek</string>
     <string name="weight_title">Waga</string>
     <string name="phys_activity_title">Aktywność fizyczna</string>
-    <string name="warn_settings_incomplete">Ustawienia są niekompletne</string>
-    <string name="prefs_def_value">-1</string>
+    <string name="water_demand_title">Bieżące zapotrzebowanie w ml</string>
+    <string name="add_reading_title">Dodaj porcję wypitej wody</string>
+
+    <string name="warn_settings_incomplete">Ustawienia są niekompletne, uzupełnij je, żeby poprawnie wyliczyć zapotrzebowanie</string>
+
+    <string name="warn_settings_changed">Zmiana ustawień - zrestartuj applikację, zeby wprowadzić zmiany</string>
+    <string name="water_ml_label">Ilość wody w ml</string>
+    <string name="save_reading_label">dodaj</string>
+
+    <string name="add_reading">Dodaj wpis</string>
 
 </resources>
